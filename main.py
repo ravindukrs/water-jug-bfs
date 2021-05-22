@@ -87,7 +87,7 @@ def find_parents(parent_id):
             if x[0] is parent_id:
                 search_result[:0] = [(x[2], x[3])]
                 find_parents(x[1])
-
+_name_="_main_"
 if _name_ == "_main_":
 
     A = const.JUG_A_MAX_CAPACITY     # Maximum volume of Jug A
