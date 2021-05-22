@@ -62,7 +62,33 @@ def populate_graph(x, y):
             break
         k = k + 1
 
-if __name__ == "__main__":
+
+def search_graph():
+    print("\nThe solutions are printed in (x, y) format where x is the state of Jug A "
+          "and y is the state of Jug B. \nOn each line, the state change is indicated from left to right.", end="\n\n")
+    solution_count = 0
+    for key_node in graph:
+        for child_node in graph[key_node]:
+            if child_node[2] == 2 and child_node[3] == 0:
+                global search_result
+                search_result = []
+                search_result[:0] = [(child_node[2], child_node[3])]
+                find_parents(child_node[1])
+                search_result[:0] = [(0, 0)]
+                solution_count = solution_count + 1
+                print(search_result)
+
+    print("\nNumber of Solutions where x=2 are", solution_count, "in", const.MAX_ITERATIONS," iterations.\n"
+        "Increase MAX_ITERATIONS in constants to increasee depth of graph.")
+
+def find_parents(parent_id):
+    for x in graph:
+        for x in graph[x]:
+            if x[0] is parent_id:
+                search_result[:0] = [(x[2], x[3])]
+                find_parents(x[1])
+
+if _name_ == "_main_":
 
     A = const.JUG_A_MAX_CAPACITY     # Maximum volume of Jug A
     B = const.JUG_B_MAX_CAPACITY     # Maximum volume of Jug B
@@ -71,3 +97,4 @@ if __name__ == "__main__":
 
     operator = operations(A, B)
     populate_graph(x, y)
+    search_graph()
