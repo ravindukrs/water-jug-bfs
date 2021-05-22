@@ -79,7 +79,7 @@ def search_graph():
                 print(search_result)
 
     print("\nNumber of Solutions where x=2 are", solution_count, "in", const.MAX_ITERATIONS," iterations.\n"
-        "Increase MAX_ITERATIONS in constants to increasee depth of graph.")
+        "Increase MAX_ITERATIONS in constants to increase depth of graph.")
 
 def find_parents(parent_id):
     for x in graph:
@@ -88,7 +88,7 @@ def find_parents(parent_id):
                 search_result[:0] = [(x[2], x[3])]
                 find_parents(x[1])
 
-if _name_ == "_main_":
+if __name__ == "__main__":
 
     A = const.JUG_A_MAX_CAPACITY     # Maximum volume of Jug A
     B = const.JUG_B_MAX_CAPACITY     # Maximum volume of Jug B
